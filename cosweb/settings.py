@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'product',
     'article',
     'media',
-    'common'
+    'common',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'cosweb.urls'
 
@@ -80,8 +85,8 @@ WSGI_APPLICATION = 'cosweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB_NAME', 'hridi'),
-        'USER': os.environ.get('POSTGRES_DB_USER', 'hridi'),
+        'NAME': os.environ.get('POSTGRES_DB_NAME', 'newscred'),
+        'USER': os.environ.get('POSTGRES_DB_USER', 'saimon'),
         'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD', 'root'),
         'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
         'PORT': 5432,
